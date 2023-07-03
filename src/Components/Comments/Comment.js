@@ -126,7 +126,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
                   )}
                   {!isCurrentUser && (
                     <button className={`flex text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
-                      <img className="inline mr-2" src={ImageReply} alt="Reply" />
+                      <img className="inline mr-2" src={ImageReply} alt="Reply" width="14" height="13" />
                       Reply
                     </button>
                   )}
@@ -173,7 +173,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
               )}
               {!isCurrentUser && (
                 <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
-                  <img className="inline mr-2" src={ImageReply} alt="Reply" />
+                  <img className="inline mr-2" src={ImageReply} alt="Reply" width="14" height="13" />
                   Reply
                 </button>
               )}
