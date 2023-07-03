@@ -94,11 +94,11 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
           {!isMobile && (
             <div className={`comment-score flex flex-col rounded-[10px] mr-6 min-w-[40px] ${Classes['comment-score']}`}>
               <button className="pt-3 pb-5" onClick={() => handleControls('score', null, +1)}>
-                <img className="mx-auto" src={ImagePlus} alt="Plus" />
+                <img className="mx-auto" src={ImagePlus} alt="Plus" width="10" height="10" />
               </button>
               <span className="text-base font-medium text-center leading-none">{score}</span>
               <button className="pt-5 pb-3" onClick={() => handleControls('score', null, -1)}>
-                <img className="mx-auto" src={ImageMinus} alt="Minus" />
+                <img className="mx-auto" src={ImageMinus} alt="Minus" width="10" height="3" />
               </button>
             </div>
           )}
@@ -114,18 +114,18 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
                 <div className="comment-controls flex">
                   {isCurrentUser && (
                     <>
-                      <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-danger']}`} onClick={handleModal}>
-                        <img className="inline mr-2" src={ImageDelete} alt="Delete" />
+                      <button className={`flex text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-danger']}`} onClick={handleModal}>
+                        <img className="inline mr-2" src={ImageDelete} alt="Delete" width="12" height="14" />
                         Delete
                       </button>
-                      <button className={`ml-6 text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleEdit}>
-                        <img className="inline mr-2" src={ImageEdit} alt="Edit" />
+                      <button className={`flex ml-6 text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleEdit}>
+                        <img className="inline mr-2" src={ImageEdit} alt="Edit" width="14" height="14" />
                         Edit
                       </button>
                     </>
                   )}
                   {!isCurrentUser && (
-                    <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
+                    <button className={`flex text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
                       <img className="inline mr-2" src={ImageReply} alt="Reply" />
                       Reply
                     </button>
@@ -151,22 +151,22 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
           <div className="flex justify-between items-center mt-4">
             <div className={`comment-score flex items-center rounded-[10px] min-w-[40px] ${Classes['comment-score']}`}>
               <button className="p-3.5 pr-5" onClick={() => handleControls('score', null, +1)}>
-                <img className="mx-auto" src={ImagePlus} alt="Plus" />
+                <img className="mx-auto" src={ImagePlus} alt="Plus" width="10" height="10" />
               </button>
               <span className="text-base font-medium text-center leading-none">{score}</span>
               <button className="p-3.5 pl-5" onClick={() => handleControls('score', null, -1)}>
-                <img className="mx-auto" src={ImageMinus} alt="Minus" />
+                <img className="mx-auto" src={ImageMinus} alt="Minus" width="10" height="3" />
               </button>
             </div>
             <div className="comment-controls">
               {isCurrentUser && (
                 <>
                   <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-danger']}`} onClick={handleModal}>
-                    <img className="inline mr-2" src={ImageDelete} alt="Delete" />
+                    <img className="inline mr-2" src={ImageDelete} alt="Delete" width="12" height="14" />
                     Delete
                   </button>
                   <button className={`ml-6 text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleEdit}>
-                    <img className="inline mr-2" src={ImageEdit} alt="Edit" />
+                    <img className="inline mr-2" src={ImageEdit} alt="Edit" width="14" height="14" />
                     Edit
                   </button>
                 </>
