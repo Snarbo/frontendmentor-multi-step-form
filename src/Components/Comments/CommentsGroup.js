@@ -17,6 +17,37 @@ const CommentsGroup = () => {
 
   const API = 'https://react-comments-de644-default-rtdb.firebaseio.com/commentItems';
 
+  const generateDateString = (targetDate) => {
+    targetDate = new Date(targetDate);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - targetDate.getTime();
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30.44));
+    const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
+
+    let output = '';
+
+    if (days < 1) {
+      output = 'Today';
+    } else if (days === 1) {
+      output = 'Yesterday';
+    } else if (days < 7) {
+      output = days + ' days ago';
+    } else if (months < 1) {
+      output = Math.floor(days / 7) + ' weeks ago';
+    } else if (months === 1) {
+      output = '1 month ago';
+    } else if (years < 1) {
+      output = months + ' months ago';
+    } else if (years === 1) {
+      output = 'Last year';
+    } else {
+      output = years + ' years ago';
+    }
+
+    return output;
+  };
+
   useEffect(() => {
     const fetchItems = async () => {
       const res = await fetch(API + '.json');
@@ -28,7 +59,28 @@ const CommentsGroup = () => {
       const resData = await res.json();
 
       setCurrentUser(resData.currentUser);
-      setComments(resData.comments);
+
+      let updatedComments;
+      let updatedDate;
+
+      updatedComments = resData.comments.map((comment) => {
+        updatedDate = generateDateString(comment.createdAt);
+
+        const updatedComment = { ...comment, date: updatedDate };
+
+        if (comment.replies && comment.replies.length > 0) {
+          const updatedReplies = comment.replies.map((reply) => {
+            updatedDate = generateDateString(reply.createdAt);
+            return { ...reply, date: updatedDate };
+          });
+
+          return { ...updatedComment, replies: updatedReplies };
+        }
+
+        return updatedComment;
+      });
+
+      setComments(updatedComments);
       setIsLoading(false);
     };
 
@@ -99,6 +151,7 @@ const CommentsGroup = () => {
   const handleControlData = (id, action, newScore, replyTo, replyText, editedText) => {
     const parentId = findParentId(comments, id);
     const newId = generateUniqueReplyId();
+    const newDate = new Date();
     let updatedComments;
 
     switch (action) {
@@ -139,7 +192,8 @@ const CommentsGroup = () => {
           {
             id: newId,
             content: postText,
-            createdAt: 'Today',
+            createdAt: newDate,
+            date: generateDateString(newDate),
             score: 0,
             replies: [],
             user: currentUser,
@@ -155,7 +209,8 @@ const CommentsGroup = () => {
             const newReply = {
               id: newId,
               content: replyText,
-              createdAt: 'Today',
+              createdAt: newDate,
+              date: generateDateString(newDate),
               replyingTo: replyTo,
               score: 0,
               user: currentUser,

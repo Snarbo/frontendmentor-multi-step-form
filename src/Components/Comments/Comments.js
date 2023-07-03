@@ -18,7 +18,7 @@ const Comments = ({ currentUser, data, controlData, modalData }) => {
         score={data.score}
         avatar={data.user.image.png}
         username={data.user.username}
-        created={data.createdAt}
+        date={data.date}
         content={data.content}
         controlData={handleControlData}
         modalData={handleModalData}
@@ -33,7 +33,7 @@ const Comments = ({ currentUser, data, controlData, modalData }) => {
               score={reply.score}
               avatar={reply.user.image.png}
               username={reply.user.username}
-              created={reply.createdAt}
+              date={reply.date}
               replyTo={reply.replyingTo}
               content={reply.content}
               controlData={handleControlData}

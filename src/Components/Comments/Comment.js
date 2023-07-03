@@ -7,7 +7,7 @@ import ImageDelete from '../../images/icon-delete.svg';
 import ImageEdit from '../../images/icon-edit.svg';
 import Classes from './Comments.module.css';
 
-function Comment({ id, currentUser, score: initialScore, avatar, username, created, replyTo, content, controlData, modalData }) {
+function Comment({ id, currentUser, score: initialScore, avatar, username, date, replyTo, content, controlData, modalData }) {
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const [score, setScore] = useState(initialScore);
   const [showReply, setShowReply] = useState(false);
@@ -108,7 +108,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, creat
                 <img className="mr-4 object-cover" src={avatar} alt={username} width="32" height="32" />
                 <h6 className="mr-2 text-base font-medium leading-none">{username}</h6>
                 {isCurrentUser && <span className="rounded-sm mr-4 p-1.5 text-[13px] font-medium text-white leading-none">you</span>}
-                <p className="text-base leading-none">{created}</p>
+                <p className="text-base leading-none">{date}</p>
               </div>
               {!isMobile && (
                 <div className="comment-controls flex">
