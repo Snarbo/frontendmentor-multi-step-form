@@ -17,37 +17,6 @@ const CommentsGroup = () => {
 
   const API = 'https://react-comments-de644-default-rtdb.firebaseio.com/commentItems';
 
-  const generateDateString = (targetDate) => {
-    targetDate = new Date(targetDate);
-    const currentDate = new Date();
-    const timeDifference = currentDate.getTime() - targetDate.getTime();
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30.44));
-    const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
-
-    let output = '';
-
-    if (days < 1) {
-      output = 'Today';
-    } else if (days === 1) {
-      output = 'Yesterday';
-    } else if (days < 7) {
-      output = days + ' days ago';
-    } else if (months < 1) {
-      output = Math.floor(days / 7) + ' weeks ago';
-    } else if (months === 1) {
-      output = '1 month ago';
-    } else if (years < 1) {
-      output = months + ' months ago';
-    } else if (years === 1) {
-      output = 'Last year';
-    } else {
-      output = years + ' years ago';
-    }
-
-    return output;
-  };
-
   useEffect(() => {
     const fetchItems = async () => {
       const res = await fetch(API + '.json');
@@ -120,16 +89,7 @@ const CommentsGroup = () => {
     };
   }, []);
 
-  const generateUniqueReplyId = () => {
-    const maxId = Math.max(...commentIds);
-    return maxId + 1;
-  };
-
-  const handlePostText = (e) => {
-    setPostText(e.target.value);
-  };
-
-  function findParentId(nestedArray, targetId, parentId = null) {
+  const findParentId = (nestedArray, targetId, parentId = null) => {
     for (let item of nestedArray) {
       if (item.id === targetId) {
         parentId = item.id;
@@ -146,7 +106,80 @@ const CommentsGroup = () => {
     }
 
     return parentId;
-  }
+  };
+
+  const generateDateString = (targetDate) => {
+    targetDate = new Date(targetDate);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - targetDate.getTime();
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30.44));
+    const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
+
+    let output = '';
+
+    if (days < 1) {
+      output = 'Today';
+    } else if (days === 1) {
+      output = 'Yesterday';
+    } else if (days < 7) {
+      output = days + ' days ago';
+    } else if (months < 1 && Math.floor(days / 7) === 1) {
+      output = Math.floor(days / 7) + ' week ago';
+    } else if (months < 1) {
+      output = Math.floor(days / 7) + ' weeks ago';
+    } else if (months === 1) {
+      output = '1 month ago';
+    } else if (years < 1) {
+      output = months + ' months ago';
+    } else if (years === 1) {
+      output = 'Last year';
+    } else {
+      output = years + ' years ago';
+    }
+
+    return output;
+  };
+
+  const generateUniqueReplyId = () => {
+    const maxId = Math.max(...commentIds);
+    return maxId + 1;
+  };
+
+  const handleModalData = (id) => {
+    setCommentIdToRemove(id);
+    setShowModal(true);
+  };
+
+  const handleModalAction = (id, action) => {
+    const parentId = findParentId(comments, id);
+    let updatedComments;
+
+    if (action === 'cancel') {
+      updatedComments = [...comments];
+    } else if (action === 'delete') {
+      updatedComments = comments
+        .map((comment) => {
+          if (comment.id === parentId) {
+            if (parentId === id) {
+              return null;
+            }
+
+            comment.replies = comment.replies.filter((reply) => reply.id !== id);
+          }
+          return comment;
+        })
+        .filter(Boolean);
+    }
+
+    setComments(updatedComments);
+    executeHttpMethod(updatedComments);
+    setShowModal(false);
+  };
+
+  const handlePostText = (e) => {
+    setPostText(e.target.value);
+  };
 
   const handleControlData = (id, action, newScore, replyTo, replyText, editedText) => {
     const parentId = findParentId(comments, id);
@@ -260,37 +293,6 @@ const CommentsGroup = () => {
     executeHttpMethod(updatedComments);
   };
 
-  const handleModalData = (id) => {
-    setCommentIdToRemove(id);
-    setShowModal(true);
-  };
-
-  const handleModalAction = (id, action) => {
-    const parentId = findParentId(comments, id);
-    let updatedComments;
-
-    if (action === 'cancel') {
-      updatedComments = [...comments];
-    } else if (action === 'delete') {
-      updatedComments = comments
-        .map((comment) => {
-          if (comment.id === parentId) {
-            if (parentId === id) {
-              return null;
-            }
-
-            comment.replies = comment.replies.filter((reply) => reply.id !== id);
-          }
-          return comment;
-        })
-        .filter(Boolean);
-    }
-
-    setComments(updatedComments);
-    executeHttpMethod(updatedComments);
-    setShowModal(false);
-  };
-
   const executeHttpMethod = (data) => {
     fetch(API + '/comments.json', {
       method: 'PUT',
@@ -332,7 +334,7 @@ const CommentsGroup = () => {
           modalAction={handleModalAction}
         />
       )}
-      <section className="comments-container py-16">
+      <section className="comments-container py-8 min-[700px]:py-16">
         <div className="container">
           <div className="comments">
             {comments.map((comment) => (

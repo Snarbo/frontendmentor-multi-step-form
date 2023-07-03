@@ -24,7 +24,7 @@ const Comments = ({ currentUser, data, controlData, modalData }) => {
         modalData={handleModalData}
       />
       {data.replies && (
-        <div className={`comment-replies relative max-[375px]:pl-[18px] min-[375px]:pl-[90px]  ${Classes['comment-replies']}`}>
+        <div className={`comment-replies relative max-[700px]:pl-[18px] min-[700px]:pl-[90px] ${Classes['comment-replies']}`}>
           {data.replies.map((reply) => (
             <Comment
               key={reply.id}

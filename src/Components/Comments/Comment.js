@@ -52,6 +52,10 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
     setReplyText(e.target.value);
   };
 
+  const handleModal = () => {
+    modalData(id);
+  };
+
   const handleControls = (action, replyTo, scoreAmount) => {
     let newScore;
 
@@ -83,10 +87,6 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
     controlData(id, action, newScore, replyTo, replyText, editedText);
   };
 
-  const handleModal = () => {
-    modalData(id);
-  };
-
   return (
     <>
       <div className="comment-item rounded-lg mt-5 p-6 bg-white">
@@ -104,7 +104,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
           )}
           <div className="flex-1">
             <div className="comment-head flex justify-between items-center">
-              <div className={`comment-profile flex items-center mr-6 ${Classes['comment-profile']}`}>
+              <div className={`comment-profile flex flex-wrap items-center mr-6 ${Classes['comment-profile']}`}>
                 <img className="mr-4 object-cover" src={avatar} alt={username} width="32" height="32" />
                 <h6 className="mr-2 text-base font-medium leading-none">{username}</h6>
                 {isCurrentUser && <span className="rounded-sm mr-4 p-1.5 text-[13px] font-medium text-white leading-none">you</span>}
