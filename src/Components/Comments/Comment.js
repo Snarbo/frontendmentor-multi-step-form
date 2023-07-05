@@ -93,11 +93,11 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
         <div className="flex">
           {!isMobile && (
             <div className={`comment-score flex flex-col rounded-[10px] mr-6 min-w-[40px] ${Classes['comment-score']}`}>
-              <button className="pt-3 pb-5" onClick={() => handleControls('score', null, +1)}>
+              <button className="pt-3 pb-5" onClick={() => handleControls('score', null, +1)} disabled={isCurrentUser}>
                 <img className="mx-auto" src={ImagePlus} alt="Plus" width="10" height="10" />
               </button>
               <span className="text-base font-medium text-center leading-none">{score}</span>
-              <button className="pt-5 pb-3" onClick={() => handleControls('score', null, -1)}>
+              <button className="pt-5 pb-3" onClick={() => handleControls('score', null, -1)} disabled={isCurrentUser}>
                 <img className="mx-auto" src={ImageMinus} alt="Minus" width="10" height="3" />
               </button>
             </div>

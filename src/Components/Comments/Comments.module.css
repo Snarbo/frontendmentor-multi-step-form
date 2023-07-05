@@ -7,6 +7,10 @@
   background-color: var(--color-very-light-gray);
 }
 
+.comment-score button:disabled {
+  cursor: not-allowed;
+}
+
 .comment-score span {
   color: var(--color-moderate-blue);
 }
