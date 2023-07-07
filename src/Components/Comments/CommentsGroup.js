@@ -343,7 +343,7 @@ const CommentsGroup = () => {
           </div>
           {!isMobile && (
             <div className={`post-item rounded-lg flex items-start mt-5 p-6 bg-white ${Classes['post-item']}`}>
-              <img className="mr-4 h-10" src={currentUser.image.png} alt="User" width="40" height="40" />
+              <img className="mr-4 h-10" src={currentUser.image.png} alt="User icon" width="40" height="40" />
               <textarea className="flex-1 rounded-lg mr-4 py-3 px-6 min-h-[95px]" value={postText} placeholder="Add a comment..." onChange={handlePostText}></textarea>
               <button
                 className={`button button-action rounded-lg py-3.5 px-6 text-base text-medium leading-none text-white uppercase transition-all ${Classes['comment-controls-button']}`}
@@ -357,7 +357,7 @@ const CommentsGroup = () => {
             <div className={`post-item rounded-lg mt-5 p-6 bg-white ${Classes['post-item']}`}>
               <textarea className="flex-1 rounded-lg py-3 px-6 w-full min-h-[95px]" value={postText} placeholder="Add a comment..." onChange={handlePostText}></textarea>
               <div className="flex justify-between items-center mt-4">
-                <img className="mr-4 h-10" src={currentUser.image.png} alt="User" width="40" height="40" />
+                <img className="mr-4 h-10" src={currentUser.image.png} alt="User icon" width="40" height="40" />
                 <button
                   className={`button button-action rounded-lg py-3.5 px-6 text-base text-medium leading-none text-white uppercase transition-all ${Classes['comment-controls-button']}`}
                   onClick={() => handleControlData(null, 'post', null, null, postText)}

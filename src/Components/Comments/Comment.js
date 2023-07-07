@@ -94,20 +94,20 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
           {!isMobile && (
             <div className={`comment-score flex flex-col rounded-[10px] mr-6 min-w-[40px] ${Classes['comment-score']}`}>
               <button className="pt-3 pb-5" onClick={() => handleControls('score', null, +1)} disabled={isCurrentUser}>
-                <img className="mx-auto" src={ImagePlus} alt="Plus" width="10" height="10" />
+                <img className="mx-auto" src={ImagePlus} alt="Press to up-vote the comment." width="10" height="10" />
               </button>
               <span className="text-base font-medium text-center leading-none">{score}</span>
               <button className="pt-5 pb-3" onClick={() => handleControls('score', null, -1)} disabled={isCurrentUser}>
-                <img className="mx-auto" src={ImageMinus} alt="Minus" width="10" height="3" />
+                <img className="mx-auto" src={ImageMinus} alt="Press to down-vote the comment." width="10" height="3" />
               </button>
             </div>
           )}
           <div className="flex-1">
             <div className="comment-head flex justify-between items-center">
-              <div className={`comment-profile flex flex-wrap items-center mr-6 ${Classes['comment-profile']}`}>
-                <img className="mr-4 object-cover" src={avatar} alt={username} width="32" height="32" />
-                <h6 className="mr-2 text-base font-medium leading-none">{username}</h6>
-                {isCurrentUser && <span className="rounded-sm mr-4 p-1.5 text-[13px] font-medium text-white leading-none">you</span>}
+              <div className={`comment-profile flex flex-wrap items-center mr-6 gap-2 ${Classes['comment-profile']}`}>
+                <img className="mr-2 object-cover" src={avatar} alt={username} width="32" height="32" />
+                <h6 className="text-base font-medium leading-none">{username}</h6>
+                {isCurrentUser && <span className="rounded-sm mr-2 p-1.5 text-[13px] font-medium text-white leading-none">you</span>}
                 <p className="text-base leading-none">{date}</p>
               </div>
               {!isMobile && (
@@ -115,18 +115,18 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
                   {isCurrentUser && (
                     <>
                       <button className={`flex text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-danger']}`} onClick={handleModal}>
-                        <img className="inline mr-2" src={ImageDelete} alt="Delete" width="12" height="14" />
+                        <img className="inline mr-2" src={ImageDelete} alt="Press to delete the comment." width="12" height="14" />
                         Delete
                       </button>
                       <button className={`flex ml-6 text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleEdit}>
-                        <img className="inline mr-2" src={ImageEdit} alt="Edit" width="14" height="14" />
+                        <img className="inline mr-2" src={ImageEdit} alt="Press to edit the comment." width="14" height="14" />
                         Edit
                       </button>
                     </>
                   )}
                   {!isCurrentUser && (
                     <button className={`flex text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
-                      <img className="inline mr-2" src={ImageReply} alt="Reply" width="14" height="13" />
+                      <img className="inline mr-2" src={ImageReply} alt="Press to respond or provide a reply." width="14" height="13" />
                       Reply
                     </button>
                   )}
@@ -148,32 +148,32 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
           </div>
         </div>
         {isMobile && (
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex flex-wrap justify-between items-center mt-4 gap-2">
             <div className={`comment-score flex items-center rounded-[10px] min-w-[40px] ${Classes['comment-score']}`}>
               <button className="p-3.5 pr-5" onClick={() => handleControls('score', null, +1)}>
-                <img className="mx-auto" src={ImagePlus} alt="Plus" width="10" height="10" />
+                <img className="mx-auto" src={ImagePlus} alt="Press to up-vote the comment." width="10" height="10" />
               </button>
               <span className="text-base font-medium text-center leading-none">{score}</span>
               <button className="p-3.5 pl-5" onClick={() => handleControls('score', null, -1)}>
-                <img className="mx-auto" src={ImageMinus} alt="Minus" width="10" height="3" />
+                <img className="mx-auto" src={ImageMinus} alt="Press to down-vote the comment." width="10" height="3" />
               </button>
             </div>
             <div className="comment-controls">
               {isCurrentUser && (
                 <>
                   <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-danger']}`} onClick={handleModal}>
-                    <img className="inline mr-2" src={ImageDelete} alt="Delete" width="12" height="14" />
+                    <img className="inline mr-2" src={ImageDelete} alt="Press to delete the comment." width="12" height="14" />
                     Delete
                   </button>
                   <button className={`ml-6 text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleEdit}>
-                    <img className="inline mr-2" src={ImageEdit} alt="Edit" width="14" height="14" />
+                    <img className="inline mr-2" src={ImageEdit} alt="Press to edit the comment." width="14" height="14" />
                     Edit
                   </button>
                 </>
               )}
               {!isCurrentUser && (
                 <button className={`text-base font-medium leading-none transition-all cursor-pointer ${Classes['comment-controls-normal']}`} onClick={handleComment}>
-                  <img className="inline mr-2" src={ImageReply} alt="Reply" width="14" height="13" />
+                  <img className="inline mr-2" src={ImageReply} alt="Press to respond or provide a reply." width="14" height="13" />
                   Reply
                 </button>
               )}
@@ -193,7 +193,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
       </div>
       {showReply && !isMobile && (
         <div className={`reply-item rounded-lg flex items-start mt-2 p-6 bg-white ${Classes['reply-item']}`}>
-          <img className="mr-4 h-10" src={currentUser.image.png} alt="User" width="40" height="40" />
+          <img className="mr-4 h-10" src={currentUser.image.png} alt="User Icon" width="40" height="40" />
           <textarea className="flex-1 rounded-lg mr-4 py-3 px-6 min-h-[95px]" value={replyText} placeholder="Reply to comment..." onChange={handleReplyText}></textarea>
           <button
             className={`button button-action rounded-lg py-3.5 px-6 text-base text-medium leading-none text-white uppercase transition-all ${Classes['comment-controls-button']}`}
@@ -207,7 +207,7 @@ function Comment({ id, currentUser, score: initialScore, avatar, username, date,
         <div className={`reply-item rounded-lg mt-2 p-6 bg-white ${Classes['reply-item']}`}>
           <textarea className="flex-1 rounded-lg py-3 px-6 w-full min-h-[95px]" value={replyText} placeholder="Reply to comment..." onChange={handleReplyText}></textarea>
           <div className="flex justify-between items-center mt-4">
-            <img className="mr-4 h-10" src={currentUser.image.png} alt="User" width="40" height="40" />
+            <img className="mr-4 h-10" src={currentUser.image.png} alt="User icon" width="40" height="40" />
             <button
               className={`button button-action rounded-lg py-3.5 px-6 text-base text-medium leading-none text-white uppercase transition-all ${Classes['comment-controls-button']}`}
               onClick={() => handleControls('reply', username)}
