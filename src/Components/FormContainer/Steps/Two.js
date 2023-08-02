@@ -30,7 +30,12 @@ const Two = () => {
       <p className="wizard-section-description mt-2.5 leading-[25px]">You have the option of monthly or yearly billing.</p>
       <ul className="wizard-section-plans mt-5 md:flex md:gap-[18px] md:mt-[35px]">
         {plansData.map(({ id, img, name, priceMonthly, priceYearly }) => (
-          <li key={id} id={id} className="wizard-section-plan flex border rounded-lg mt-3 pt-3.5 px-4 pb-[18px] md:block md:flex-1 md:m-0 md:py-5" onClick={(e) => handlePlanSelect(e, id)}>
+          <li
+            key={id}
+            id={id}
+            className="wizard-section-plan flex border rounded-lg mt-3 pt-3.5 px-4 pb-[18px] cursor-pointer md:block md:flex-1 md:m-0 md:py-5"
+            onClick={(e) => handlePlanSelect(e, id)}
+          >
             <img src={img} alt="Plan Icon" className="wizard-section-plan-icon mr-3.5 h-fit md:m-0" />
             <div className="md:mt-10">
               <h6 className="wizard-section-plan-name font-medium leading-none">{name}</h6>

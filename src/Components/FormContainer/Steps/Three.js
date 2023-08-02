@@ -43,7 +43,7 @@ const Three = () => {
           <li
             key={id}
             id={id}
-            className="wizard-section-addon border rounded-lg mt-3 flex pt-3 pr-4 pb-2.5 pl-[52px] md:mt-4 md:py-[18px] md:pr-6 md:pl-[68px]"
+            className="wizard-section-addon border rounded-lg mt-3 flex pt-3 pr-4 pb-2.5 pl-[52px] cursor-pointer md:mt-4 md:py-[18px] md:pr-6 md:pl-[68px]"
             onClick={(e) => handleAddOnClick(e, id)}
           >
             <input id={id + 'Input'} className="wizard-section-addon-input hidden" type="checkbox" />
