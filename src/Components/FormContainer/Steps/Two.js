@@ -49,7 +49,7 @@ const Two = () => {
       </ul>
       <div className="wizard-section-toggle-container flex justify-center items-center rounded-lg mt-6 p-3.5 md:mt-8">
         <p className={`text-sm font-medium md:font-bold ${isMonthly ? 'active' : ''}`}>Monthly</p>
-        <div className="wizard-section-toggle relative rounded-full mx-6 w-[38px] h-5" onClick={handleBilling}>
+        <div className="wizard-section-toggle relative rounded-full mx-6 w-[38px] h-5 cursor-pointer" onClick={handleBilling}>
           <div className={`wizard-section-toggle-circle absolute top-1 bottom-1 left-1 rounded-full w-3 h-3 bg-white ${!isMonthly ? 'active' : ''}`}></div>
         </div>
         <p className={`text-sm font-medium md:font-bold ${!isMonthly ? 'active' : ''}`}>Yearly</p>
