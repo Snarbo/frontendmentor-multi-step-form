@@ -1,0 +1,40 @@
+#wizard-section-summary .wizard-section {
+  &-summary {
+    background-color: $color-light-grey-alt;
+
+    hr {
+      border-color: $color-grey;
+    }
+  }
+
+  &-plan {
+    &-name,
+    &-price {
+      color: $color-dark-blue;
+    }
+
+    &-button {
+      color: $color-grey;
+    }
+  }
+
+  &-addon {
+    &-name {
+      color: $color-grey;
+    }
+
+    &-price {
+      color: $color-dark-blue;
+    }
+  }
+
+  &-total {
+    p {
+      color: $color-grey;
+    }
+
+    h5 {
+      color: $color-purple;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+#wizard-section-personal .wizard-section {
+  &-form-field {
+    label {
+      color: $color-dark-blue;
+    }
+
+    input {
+      border-color: $color-light-grey;
+      color: $color-dark-blue;
+
+      &::placeholder {
+        color: $color-grey;
+      }
+
+      &:focus {
+        border-color: $color-purple;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+      }
+    }
+
+    &.error {
+      .wizard-section-form-error {
+        display: block;
+      }
+
+      input {
+        border-color: $color-red;
+      }
+    }
+  }
+
+  &-form-error {
+    color: $color-red;
+  }
+}

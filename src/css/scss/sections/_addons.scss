@@ -1,0 +1,63 @@
+#wizard-section-addons .wizard-section {
+  &-addon {
+    border-color: $color-light-grey;
+
+    input {
+      & + div {
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: -36px;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
+
+          @media all and (min-width: 768px) {
+            left: -44px;
+          }
+        }
+
+        &::before {
+          border: 1px solid $color-light-grey;
+          border-radius: 5px;
+        }
+
+        &::after {
+          transform: translateY(-50%) scale(0);
+          background: url('../../assets/icons/check.svg');
+          transition: all 0.2s;
+        }
+      }
+
+      &:checked + div {
+        &::before {
+          border-color: $color-purple;
+          background-color: $color-purple;
+        }
+
+        &::after {
+          transform: translateY(-50%) scale(1);
+        }
+      }
+    }
+
+    &-name {
+      color: $color-dark-blue;
+    }
+
+    &-description {
+      color: $color-grey;
+    }
+
+    &-additional {
+      color: $color-purple;
+    }
+
+    &.active {
+      border-color: $color-purple;
+      background-color: $color-light-grey-alt;
+    }
+  }
+}

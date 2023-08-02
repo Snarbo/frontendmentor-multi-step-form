@@ -1,0 +1,25 @@
+.button {
+  &-back {
+    color: $color-grey;
+
+    &:hover {
+      color: $color-dark-blue;
+    }
+  }
+
+  &-next {
+    background-color: $color-dark-blue;
+
+    &:hover {
+      background-color: $color-blue;
+    }
+  }
+
+  &-confirm {
+    background-color: $color-purple;
+
+    &:hover {
+      background-color: $color-light-purple;
+    }
+  }
+}

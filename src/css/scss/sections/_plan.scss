@@ -1,0 +1,37 @@
+#wizard-section-plan .wizard-section {
+  &-plan {
+    &-name,
+    &-additional {
+      color: $color-dark-blue;
+    }
+
+    &-price {
+      color: $color-grey;
+    }
+
+    &.active {
+      border-color: $color-purple;
+      background-color: $color-light-grey-alt;
+    }
+  }
+
+  &-toggle {
+    background-color: $color-dark-blue;
+
+    &-container {
+      background-color: $color-light-grey-alt;
+      p {
+        color: $color-grey;
+
+        &.active {
+          color: $color-dark-blue;
+        }
+      }
+    }
+
+    &-circle.active {
+      left: initial;
+      right: 4px;
+    }
+  }
+}

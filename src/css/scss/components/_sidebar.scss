@@ -1,0 +1,20 @@
+.wizard-sidebar {
+  background: 50% / cover;
+  background-image: url('../../assets/bg/sidebar-mobile.svg');
+
+  &-step {
+    &-name {
+      color: $color-lilac;
+    }
+  }
+
+  &-step.active .wizard-sidebar-step-number {
+    border-color: $color-sea-blue-alt;
+    background-color: $color-sea-blue-alt;
+    color: #022959;
+  }
+
+  @media all and (min-width: 768px) {
+    background-image: url('../../assets/bg/sidebar-desktop.svg');
+  }
+}
