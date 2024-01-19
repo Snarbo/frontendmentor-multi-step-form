@@ -36,43 +36,43 @@ const One = () => {
             <label className="text-xs md:text-sm md:leading-none" htmlFor="nameInput">
               Name
             </label>
-            <span className="hidden wizard-section-form-error text-xs font-bold md:text-sm md:leading-none">This field is required</span>
+            <span className="hidden text-xs font-bold wizard-section-form-error md:text-sm md:leading-none">This field is required</span>
           </div>
           <input
             id="nameInput"
-            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0 md:mt-2.5 md:text-base md:leading-none"
+            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0 md:mt-2 md:text-base md:leading-none"
             type="text"
             placeholder="e.g. Stephen King"
             value={name}
             onChange={handleName}
           />
         </fieldset>
-        <fieldset id="wizard-section-form-field-email" className="wizard-section-form-field mt-4">
+        <fieldset id="wizard-section-form-field-email" className="mt-4 wizard-section-form-field">
           <div className="flex justify-between">
-            <label className="text-xs" htmlFor="emailInput">
+            <label className="text-xs md:text-sm md:leading-none" htmlFor="emailInput">
               Email address
             </label>
-            <span className="hidden wizard-section-form-error text-xs font-bold">This field is required</span>
+            <span className="hidden text-xs font-bold wizard-section-form-error md:text-sm md:leading-none">This field is required</span>
           </div>
           <input
             id="emailInput"
-            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0"
+            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0 md:mt-2 md:text-base md:leading-none"
             type="email"
             placeholder="e.g. stephenking@lorem.com"
             value={email}
             onChange={handleEmail}
           />
         </fieldset>
-        <fieldset id="wizard-section-form-field-phone" className="wizard-section-form-field mt-4">
+        <fieldset id="wizard-section-form-field-phone" className="mt-4 wizard-section-form-field">
           <div className="flex justify-between">
-            <label className="text-xs" htmlFor="phoneInput">
+            <label className="text-xs md:text-sm md:leading-none" htmlFor="phoneInput">
               Phone Number
             </label>
-            <span className="hidden wizard-section-form-error text-xs font-bold">This field is required</span>
+            <span className="hidden text-xs font-bold wizard-section-form-error md:text-sm md:leading-none">This field is required</span>
           </div>
           <input
             id="phoneInput"
-            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0"
+            className="border rounded-lg mt-[3px] py-3 px-4 text-[15px] font-medium w-full leading-none outline-0 md:mt-2 md:text-base md:leading-none"
             type="number"
             placeholder="e.g. +1 234 567 890"
             value={phone}
